@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@color/black" >
+	
+        <!-- AD BANNER -->
+    	<Button
+        	android:id="@+id/menu_friends_ad_banner"
+        	style="@style/ad_banner" />
+    
+    	<LinearLayout
+	        android:id="@+id/menu_friends_linear_layout"
+	        android:orientation="vertical"
+	        android:layout_below="@id/menu_friends_ad_banner"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_marginTop="10dp"
+	        android:layout_marginLeft="50dp"
+	        android:layout_marginRight="50dp"
+	        android:background="@drawable/border" >
+        
+    	    <Button
+    	        android:id="@+id/menu_friends_button_add_friend"
+    	        android:layout_width="match_parent"
+    	        android:layout_height="wrap_content"
+    	        android:text="@string/menu_friends_add_friend"
+    	        android:textSize="20sp"
+    	        android:textColor="@color/white"
+    	        android:layout_margin="6dp"
+    	        android:background="@drawable/button_colors" />
+    	    
+   		</LinearLayout>
+	</RelativeLayout>
+</ScrollView>

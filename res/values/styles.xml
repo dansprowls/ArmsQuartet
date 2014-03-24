@@ -1,0 +1,31 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- ACCOUNT EDITTEXT -->
+    <style name="account_edittext">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:background">@color/darkGray</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/lightGray</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:maxLength">20</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:layout_marginLeft">30dp</item>
+        <item name="android:layout_marginRight">30dp</item>
+    </style>
+    
+    <!-- AD BANNER -->
+    <style name="ad_banner">
+        <item name="android:contentDescription">@string/ad_banner</item>
+        <item name="android:layout_width">320dp</item>    
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">@color/darkGray</item>
+		<item name="android:textColor">@color/lightGray</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:text">@string/ad_banner</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+ 
+</resources>

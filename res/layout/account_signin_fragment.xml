@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical" >
+
+    <!-- TOP HALF -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <EditText
+            android:id="@+id/signin_edittext_email"
+            style="@style/account_edittext"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="40dp"
+            android:hint="@string/signin_email"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/signin_edittext_password"
+            style="@style/account_edittext"
+            android:layout_below="@id/signin_edittext_email"
+            android:layout_marginTop="10dp"
+            android:hint="@string/signin_password"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/signin_button_signin"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/signin_edittext_password"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/button_colors"
+            android:text="@string/signin_signin"
+            android:textColor="@color/lighterGray"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/signin_button_forgotpassword"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/signin_button_signin"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/transparent"
+            android:text="@string/signin_forgotpassword"
+            android:textColor="@color/lighterGray"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <!-- BOTTOM HALF -->
+    <!-- THIS SHOULD BE REPLACED MY A PROPER LOGO IMAGE -->
+
+    <TextView
+        android:id="@+id/signin_text_app_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="50sp" />   
+
+</LinearLayout>
