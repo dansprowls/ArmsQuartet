@@ -1,0 +1,4 @@
+FriendDialog:
+	- Updated the icon images.
+DeleteFriendDialog
+	- Created .java and .xml files.

@@ -1,14 +1,8 @@
 package com.srirachagames.armsquartet;
 
-import java.util.List;
-
 import android.util.Log;
 
-import com.parse.FindCallback;
-import com.parse.GetCallback;
-import com.parse.ParseException;
 import com.parse.ParseObject;
-import com.parse.ParseQuery;
 
 public class PlayerCharacter {
 	

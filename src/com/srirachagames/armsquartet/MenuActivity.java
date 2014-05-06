@@ -5,7 +5,6 @@ import android.app.ActionBar.Tab;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -21,21 +20,17 @@ public class MenuActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.d(TAG, "onCreate called");
 		setContentView(R.layout.menu_activity);
-		
 		appInstance = (AppInstance) getApplication();
 		
-		initTabNavigation(); 	// Initialize the navigation tabs.
-	}	
-	
-	@Override
-	protected void onStart() {
-		super.onStart();
-		// Refresh all user and character data.
+		// Refresh the user's data.
 		appInstance.showProgressBar("Loading user data...", this);
-		// Refresh ParseUser data in currentUser.
-		appInstance.refreshUser();
-	}
+		appInstance.refreshUser(this);
+		
+		// Initialize the navigation tabs.
+		initTabNavigation();
+	}	
 
 	/*
 	 * initTabNavigation() puts the Action Bar in navigation tab mode and creates

@@ -1,14 +1,11 @@
 package com.srirachagames.armsquartet;
 
-import com.parse.ParseAnalytics;
-
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
+
+import com.parse.ParseAnalytics;
 
 public class AccountActivity extends Activity {
 	

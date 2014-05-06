@@ -1,7 +1,5 @@
 package com.srirachagames.armsquartet;
 
-import java.util.List;
-
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
@@ -13,21 +11,21 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import java.util.List;
+
+// TODO: Have the list refresh automatically after a friend is added or deleted.
+		// Broadcast Receiver or Listener? 
 public class MenuFriendsListFragment extends Fragment implements
 		OnClickListener {
 	private static final String TAG = "MenuFriendsListFragment";
 	private AppInstance appInstance;
-	private User user;
 	private Button addFriendButton;
 	
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		appInstance = (AppInstance) getActivity().getApplication();
-		user = appInstance.getUser();
-		// TODO: user.fetchBattleList;
-		// TODO: user.fetchFriendsList;
-
+		//createAddFriendButton();
 		populateFriendList();
 	}
 
@@ -37,24 +35,12 @@ public class MenuFriendsListFragment extends Fragment implements
 		appInstance = (AppInstance) getActivity().getApplication();
 		View v = infalter.inflate(R.layout.menu_friends_list_fragment,
 				container, false);
-		
-		// Set on click listener for add friend button.
-		addFriendButton = (Button) v.findViewById(R.id.menu_friends_button_add_friend);
-		addFriendButton.setOnClickListener(this);
-		
 		return v;
 
 	}
 
 	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.menu_friends_button_add_friend:
-			showDialog(true, null);
-			Log.d(TAG, "Add friend button clicked");
-			break;
-		}
-
+	public void onClick(View v) { // Dynamically added to each button present.
 	}
 
 	private void populateFriendList() {
@@ -69,13 +55,24 @@ public class MenuFriendsListFragment extends Fragment implements
 		buttonParams.setMargins(marginSize, 0, marginSize, marginSize);
 
 		// Get the linear layout to add the buttons to.
-		LinearLayout friendList = (LinearLayout) getActivity().findViewById(
+		LinearLayout friendListLayout = (LinearLayout) getActivity().findViewById(
 				R.id.menu_friends_linear_layout);
 
-		// Add a button to the layout for each Friend the user is has.
+		// Get the user's friends list from the current user's data.
 		List<String> friendsList = appInstance.getCurrentUser().getList("friendsList");
+		
+		// Recreate the Add Friend button.
+		createAddFriendButton(friendListLayout);
+		
 		// Does the user have at least one friend?
 		if(friendsList != null) {
+			
+			// Remove friends before reapplying them.
+			friendListLayout.removeAllViews();
+			
+			// Recreate the Add Friend button.
+			createAddFriendButton(friendListLayout);
+			
 			// Create a button for each friend.
 			for(int i = 0; i < friendsList.size(); i++) {
 				Button friendButton = new Button(getActivity());
@@ -90,26 +87,52 @@ public class MenuFriendsListFragment extends Fragment implements
 						Log.d(TAG, button.getText() + " clicked");
 						Bundle b = new Bundle();
 						b.putString("friendName", button.getText().toString());
-						showDialog(false, b);
+						showFriendDialog(b);
 					}
 				});
-				friendList.addView(friendButton, buttonParams);
-				Log.d(TAG, "Created button for friend: " + friendsList.get(i));
+				// Add the button the the layout.
+				friendListLayout.addView(friendButton, buttonParams);
 			}
 		}
 	}
 
-	public void showDialog(boolean addFriend, Bundle b) {
+	private void showAddFriendDialog() {
 		FragmentManager manager = getFragmentManager();
-		if(addFriend == true) {
-			AddFriendDialog addFriendDialog = new AddFriendDialog();
-			addFriendDialog.show(manager, "addFriendDialog");
-		}
-		else {
-			FriendDialog friendDialog = new FriendDialog();
-			friendDialog.setArguments(b);
-			friendDialog.show(manager, "friendDialog");
-		}
+		AddFriendDialog addFriendDialog = new AddFriendDialog();
+		addFriendDialog.show(manager, "addFriendDialog");
 	}
 
+	private void showFriendDialog(Bundle b) {
+		FragmentManager manager = getFragmentManager();
+		FriendDialog friendDialog = new FriendDialog();
+		friendDialog.setArguments(b);
+		friendDialog.show(manager, "friendDialog");
+	}
+	
+	private void createAddFriendButton(LinearLayout friendList) {
+		// Set LayoutParams for button.
+		LinearLayout.LayoutParams buttonParams = new LinearLayout.LayoutParams(
+				LinearLayout.LayoutParams.MATCH_PARENT,
+				LinearLayout.LayoutParams.WRAP_CONTENT);
+
+		// Get the appropriate pixel value for 6dp to use as the margin for each button.
+		int marginSize = (int) appInstance.convertDpToPixel(6, getActivity());
+		// Set the 6dp margin to left, right and bottom of the button.
+		buttonParams.setMargins(marginSize, marginSize, marginSize, marginSize);
+				
+		// Create the add friend button.
+		addFriendButton = new Button(getActivity());
+		addFriendButton.setText("+ Add a Friend");
+		addFriendButton.setBackgroundResource(R.drawable.button_colors);
+		addFriendButton.setTextSize(20);
+		addFriendButton.setTextColor(getResources().getColor(R.color.white));
+		addFriendButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Log.d(TAG, "Add friend button clicked");
+				showAddFriendDialog();
+			}
+		});
+		// Add the add friend button to the layout.
+		friendList.addView(addFriendButton, buttonParams);
+	}
 }

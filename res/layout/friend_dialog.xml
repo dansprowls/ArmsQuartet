@@ -8,7 +8,7 @@
         android:id="@+id/button_start_battle"
         style="?android:attr/buttonBarButtonStyle"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="65dp"
         android:layout_weight="1"
         android:layout_margin="10dp"
         android:background="@drawable/swords_crossing" />
@@ -17,17 +17,17 @@
         android:id="@+id/button_msg_friend"
         style="?android:attr/buttonBarButtonStyle"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="65dp"
         android:layout_weight="1"
         android:layout_margin="10dp"
-        android:background="@android:drawable/sym_action_chat" />
+        android:background="@drawable/chat_icon" />
     
     <Button
         android:id="@+id/button_remove_friend"
         style="?android:attr/buttonBarButtonStyle"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="65dp"
         android:layout_weight="1"
         android:layout_margin="10dp"
-        android:background="@android:drawable/ic_delete" />
+        android:background="@drawable/delete_icon" />
 </LinearLayout>

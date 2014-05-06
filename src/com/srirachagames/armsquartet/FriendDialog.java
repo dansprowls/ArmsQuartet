@@ -1,7 +1,9 @@
 package com.srirachagames.armsquartet;
 
 import android.app.DialogFragment;
+import android.app.FragmentManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -60,10 +62,28 @@ public class FriendDialog extends DialogFragment implements OnClickListener {
 	}
 	
 	private void challengeFriend() {
-		
+		Log.d(TAG, "Challenge friend clicked");
+		Bundle b = new Bundle();
+		b.putString("friendName", friendName);
+		FragmentManager manager = getFragmentManager();
+		ChallengeFriendDialog challengeFriendDialog = new ChallengeFriendDialog();
+		challengeFriendDialog.setArguments(b);
+		challengeFriendDialog.show(manager, "challenge_friend_dialog");
+		dismiss(); // TODO: Put this elsewhere to avoid removing the FriendDialog always.
+	}
+	
+	private void msgFriend() {
+		Log.d(TAG, "Msg friend clicked");
 	}
 
 	private void removeFriend() {
-		
+		Log.d(TAG, "Remove friend clicked");
+		Bundle b = new Bundle();
+		b.putString("friendName", friendName);
+		FragmentManager manager = getFragmentManager();
+		ConfirmFriendDeletion confirmFriendDeletion = new ConfirmFriendDeletion();
+		confirmFriendDeletion.setArguments(b);
+		confirmFriendDeletion.show(manager, "confirm_friend_deletion");
+		dismiss(); // TODO: Put this elsewhere to avoid removing the FriendDialog always.
 	}
 }

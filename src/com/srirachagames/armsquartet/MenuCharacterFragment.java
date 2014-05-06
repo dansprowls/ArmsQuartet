@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 public class MenuCharacterFragment extends Fragment implements OnClickListener {
 	private static final String TAG = "MenuCharacterFragment";
 	private AppInstance appInstance;
-	private User user;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,

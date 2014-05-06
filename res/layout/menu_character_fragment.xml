@@ -1,14 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blood_red" >
+    android:background="@color/black" >
     
+    <TableRow
+        android:id="@+id/row1" 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
     <!-- AD BANNER -->
-    <Button
-        android:id="@+id/menu_battles_ad_banner"
-        style="@style/ad_banner" />
+    	<Button
+        	android:id="@+id/menu_battles_ad_banner"
+        	android:layout_width="320dp"    
+        	android:layout_height="50dp"
+   			android:background="@color/darkGray"
+			android:textColor="@color/lightGray"
+        	android:textSize="30sp"
+        	android:text="@string/ad_banner"
+        	android:layout_marginTop="10dp"
+        	android:layout_marginLeft="20dp"
+        	android:layout_marginBottom="10dp" />
+    </TableRow>
     
+    <TableRow 
+        android:id="@+id/row2"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" >
+    	
+        <ImageView
+            android:id="@+id/portrait"
+            android:contentDescription="@string/portrait"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@color/blood_red" />
+        
+        <TextView
+            android:id="@+id/stats"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@color/white" />
+    </TableRow>
+        
+   <TableRow
+       android:id="@+id/row3"
+       android:layout_weight="1"
+       android:layout_width="match_parent"
+       android:layout_height="0dp" >
+       
+       <TextView
+           android:id="@+id/equipment"
+           android:layout_weight="1"
+           android:layout_width="0dp"
+           android:layout_height="match_parent"
+           android:background="@color/gray" />
+       
+       <TextView
+           android:id="@+id/abilities"
+           android:layout_weight="1"
+           android:layout_width="0dp"
+           android:layout_height="match_parent"
+           android:background="@color/lighterGray" />
+   </TableRow>
     
+        
     
-</RelativeLayout>
+</TableLayout>

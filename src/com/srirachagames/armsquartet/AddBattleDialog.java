@@ -23,7 +23,7 @@ public class AddBattleDialog extends DialogFragment implements OnClickListener {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// Set the title of the dialog.
-		getDialog().setTitle("Wage War");
+		getDialog().setTitle("Challenge a friend");
 
 		View v = inflater.inflate(R.layout.add_battle_dialog, null);
 

@@ -1,14 +1,5 @@
 package com.srirachagames.armsquartet;
 
-import java.util.List;
-
-import com.parse.GetCallback;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
-import com.parse.ParseUser;
-import com.parse.SaveCallback;
-
 import android.app.DialogFragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +9,15 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
+
+import java.util.List;
 
 public class AddFriendDialog extends DialogFragment implements OnClickListener {
 
@@ -58,6 +58,7 @@ public class AddFriendDialog extends DialogFragment implements OnClickListener {
 		}
 	}
 
+	// TODO: Set up a request system.
 	private void addFriend() {
 		// Ensure the user entered a name.
 		String input = userInput.getEditableText().toString();
@@ -98,15 +99,14 @@ public class AddFriendDialog extends DialogFragment implements OnClickListener {
 							+ parseUser.getString("characterName"));
 					
 					// Add friend to user's friends list 
-					ParseUser user = appInstance.getCurrentUser();
-					user.add("friendsList",
+					ParseUser.getCurrentUser().add("friendsList",
 							parseUser.getString("characterName"));
-					user.saveInBackground(new SaveCallback() {
+					ParseUser.getCurrentUser().saveInBackground(new SaveCallback() {
 						public void done(ParseException e) {
 							if (e == null) {
 								// Successfully updated user's friendslist.
 								Log.d(TAG, "Updated the user's friendslist.");
-								
+								// TODO: Signal an update to the friend's list ui here.
 							} else {
 								// Failed to update user's friendslist.
 								Log.d(TAG, "ERROR: " + e.getMessage());
